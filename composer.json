@@ -1,0 +1,9 @@
+{
+    "name": "a.syltanov/codeholic-my-mvc-php",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
