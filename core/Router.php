@@ -21,14 +21,23 @@ class Router
     {
         $method = $this->request->getMethod();
         $path = $this->request->getPath();
-        $callback = $this->routes[$method][$path];
+
+        if (!array_key_exists($path, $this->routes['GET'])) {
+            $callback = null;
+        } else {
+            $callback = $this->routes[$method][$path];
+        }
 
         switch ($callback) {
+            case NULL:
+                echo "the route {$path} not found";
+                break;
             case is_callable($callback):
                 echo call_user_func($callback);
                 break;
             case is_string($callback):
                 echo $callback;
+                break;
             default:
                 echo "route not found";
         }
